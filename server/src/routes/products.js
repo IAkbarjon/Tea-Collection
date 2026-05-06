@@ -14,5 +14,16 @@ router.get('/', async (req, res) => {
         })
     }
 })
+router.get('/types', async (req, res) => {
+    try {
+        const result = await pool.query(`SELECT * FROM product_types`)
+
+        return res.status(200).json(result.rows)
+    }catch (error) {
+        return res.status(error.status ?? 500).json({
+            error: error.message ?? error
+        })
+    }
+})
 
 export default router
