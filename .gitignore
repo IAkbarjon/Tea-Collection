@@ -1,0 +1,71 @@
+# ==================
+# Общие
+# ==================
+.DS_Store
+*.log
+.env
+.env.local
+.env.*.local
+dist/
+build/
+coverage/
+
+# ==================
+# Client (React/Vue/Angular + Node.js)
+# ==================
+client/node_modules/
+client/.cache/
+client/build/
+client/dist/
+client/.next/
+client/out/
+
+# Client — специфичные файлы
+client/package-lock.json  # если используете yarn — закомментировать
+client/yarn.lock          # если используете npm — закомментировать
+client/.env.development
+client/.env.production
+
+# ==================
+# Server (Node.js/Express/Python/etc.)
+# ==================
+server/node_modules/
+server/__pycache__/
+server/*.pyc
+server/.venv/
+server/venv/
+server/env/
+
+# Server — базы данных
+server/*.sqlite
+server/*.db
+server/uploads/
+server/temp/
+
+# Server — специфичные файлы
+server/package-lock.json
+server/yarn.lock
+server/.env.development
+server/.env.production
+
+# Server (если Python)
+server/__pycache__/
+server/*.py[cod]
+server/.pytest_cache/
+
+# ==================
+# IDE и редакторы
+# ==================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+
+# ==================
+# OS
+# ==================
+Thumbs.db
+desktop.ini
