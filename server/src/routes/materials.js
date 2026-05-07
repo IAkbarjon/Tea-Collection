@@ -1,28 +1,14 @@
 import { Router } from 'express'
 import { pool } from '../services/db.service.js'
+import Materials from '../controllers/materialController.js'
 
 const router = Router()
 
-const tableColumns = ['material_name', 'type_id', 'unit_price', 'stock_quantity', 'min_quantity', 'package_quantity', 'measurement_unit']
-
 router.get('/', async (req, res) => {
     try {
-        // Получение материалов с необходимым количеством
-        const result = await pool.query(`
-            SELECT
-                m.*,
-                t.type_name,
-                SUM(mp.materials_required) as required_amount
-            FROM materials m
-            JOIN materials_products mp
-                ON m.id = mp.material_id
-            JOIN material_types t
-                ON m.type_id = t.id
-            GROUP BY m.id, t.type_name
-            ORDER BY m.id
-        `)
+        const data = await Materials.getAll()
 
-        return res.status(200).json(result.rows)
+        return res.status(200).json(data)
     } catch (error) {
         console.log(error)
         return res.status(error.status || 500).json({
@@ -48,30 +34,7 @@ router.post('/', async (req, res) => {
     try {
         const body = req.body
 
-        const bodyKeys = Object.keys(body)
-        for (let column of tableColumns) {
-            if (!bodyKeys.includes(column)) {
-                console.log(`Не хватает данных в теле запроса ${column}`)
-                throw {
-                    status: 401,
-                    message: 'Не хватает данных в теле запроса'
-                }
-            }
-        }
-        if (bodyKeys.length !== tableColumns.length) {
-            console.log(`body keys: ${bodyKeys.join(', ')}`)
-            console.log(`table columns: ${tableColumns.join(', ')}`)
-            throw {
-                status: 401,
-                message: 'Не хватает данных в теле запроса'
-            }
-        }
-
-        const result = await pool.query(`
-            INSERT INTO materials (${tableColumns.join(', ')})
-            VALUES (${tableColumns.map((_, idx) => `$${idx + 1}`).join(', ')})
-            RETURNING *
-        `, tableColumns.map(col => body[col]))
+        const data = Materials.add(body)
 
         return res.status(201).json(result.rows[0])
     } catch (error) {
