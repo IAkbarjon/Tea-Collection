@@ -11,13 +11,14 @@ function MaterialsPage() {
     const { isLoading, materials } = useData()
 
     useEffect(() => {
-        setIsEditMode(!!selectedMaterial)
+        if (!selectedMaterial) {
+            setIsEditMode(false)
+        }
     }, [selectedMaterial])
     
     if (isLoading) {
         return <LoadingPage />
     }
-    console.log(materials)
 
     return (
         <div className='flex flex-col'>
