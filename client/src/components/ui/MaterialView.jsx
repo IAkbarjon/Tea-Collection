@@ -1,6 +1,8 @@
 import { Button, Card } from 'react-bootstrap'
 
 function MaterialView({ material, onSelect }) {
+    // console.log(material.unit_price)
+    
     return (
         <Card className='w-[420px]'>
             <Card.Header className='flex flex-wrap-reverse justify-between'>

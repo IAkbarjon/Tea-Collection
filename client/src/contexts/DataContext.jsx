@@ -70,7 +70,7 @@ function DataProvider({ children }) {
 
         httpService.get('/products')
             .then(res => {
-                setMaterials(res)
+                setProducts(res)
                 dataRepository.products = res
             })
             .catch(err => {

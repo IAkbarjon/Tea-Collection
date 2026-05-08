@@ -38,7 +38,7 @@ create table materials_products (
 	product_name varchar(40),
 	material_id int references materials(id),
 	product_id int references products(id),
-	material_amount_per_production decimal(5, 3)
+	materials_required decimal(5, 3)
 );
 
 -- Изменение таблиц
@@ -51,7 +51,7 @@ alter table materials
 drop column type_name;
 
 update products p
-set type_name = t.id
+set type_id = t.id
 from product_types t
 where p.type_name = t.type_name;
 
@@ -73,3 +73,7 @@ where mp.product_name = p.product_name;
 
 alter table materials_products
 drop column product_name;
+
+--
+select * from materials;
+select * from products;

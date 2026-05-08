@@ -2,16 +2,22 @@ import { useEffect, useState } from 'react'
 import MaterialView from '../components/ui/MaterialView'
 import useData from '../hooks/useData'
 import MaterialInputModal from '../components/modal/MaterialInputModal'
+import LoadingPage from './LoadingPage'
 
 function MaterialsPage() {
     const [isEditMode, setIsEditMode] = useState(false)
     const [selectedMaterial, setSelectedMaterial] = useState(null)
     
-    const { materials } = useData()
+    const { isLoading, materials } = useData()
 
     useEffect(() => {
-        setIsEditMode(selectedMaterial)
+        setIsEditMode(!!selectedMaterial)
     }, [selectedMaterial])
+    
+    if (isLoading) {
+        return <LoadingPage />
+    }
+    console.log(materials)
 
     return (
         <div className='flex flex-col'>
@@ -31,7 +37,7 @@ function MaterialsPage() {
                     <MaterialView
                         key={material.id}
                         material={material}
-                        onSelect={material => setSelectedMaterial(material)}
+                        onSelect={selectedMaterial => setSelectedMaterial(selectedMaterial)}
                     />
                 ))}
             </div>
