@@ -1,6 +1,6 @@
 import { Card } from 'react-bootstrap'
 
-function ProductView({ product }) {
+function ProductView({ product, footer }) {
   return (
     <Card className='w-[420px]'>
       <Card.Header className="flex justify-between flex-wrap-reverse">
@@ -17,6 +17,11 @@ function ProductView({ product }) {
           <Card.Text>{product.min_price_for_partners} ₽</Card.Text>
         </div>
       </Card.Body>
+      {footer && (
+        <Card.Footer>
+          {footer}
+        </Card.Footer>
+      )}
     </Card>
   )
 }

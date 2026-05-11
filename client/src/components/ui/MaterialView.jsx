@@ -1,6 +1,6 @@
 import { Button, Card } from 'react-bootstrap'
 
-function MaterialView({ material, onSelect }) {
+function MaterialView({ material, onEdit, onSelect }) {
     return (
         <Card className='w-[420px]'>
             <Card.Header className='flex flex-wrap-reverse justify-between'>
@@ -24,10 +24,11 @@ function MaterialView({ material, onSelect }) {
             <Card.Footer className='flex justify-end gap-3'>
                 <Button
                     variant='outline-secondary'
+                    onClick={() => onSelect(material)}
                 >Товары материала</Button>
                 <Button
                     variant='secondary'
-                    onClick={() => onSelect(material)}
+                    onClick={() => onEdit(material)}
                 >Редактировать</Button>
             </Card.Footer>
         </Card>

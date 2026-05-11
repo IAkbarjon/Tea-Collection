@@ -47,7 +47,7 @@ function MaterialInputModal({ onClose, editedMaterial }) {
       .then(res => {
         setMaterials(prev => {
           if (editedMaterial)
-            return prev.filter(m => m.id === res.id ? res : m)
+            return prev.map(m => m.id === res.id ? res : m)
           else
             return [...prev, res]
         })

@@ -3,16 +3,17 @@ import MaterialView from '../components/ui/MaterialView'
 import useData from '../hooks/useData'
 import MaterialInputModal from '../components/modal/MaterialInputModal'
 import LoadingPage from './LoadingPage'
+import MaterialProducts from '../components/modal/MaterialProducts'
 
 function MaterialsPage() {
-    const [isEditMode, setIsEditMode] = useState(false)
+    const [mode, setMode] = useState(null)
     const [selectedMaterial, setSelectedMaterial] = useState(null)
     
     const { isLoading, materials } = useData()
 
     useEffect(() => {
         if (!selectedMaterial) {
-            setIsEditMode(false)
+            setMode(null)
         }
     }, [selectedMaterial])
     
@@ -27,7 +28,7 @@ function MaterialsPage() {
                 <h3>Все материалы</h3>
                 <button
                     onClick={() => {
-                        setIsEditMode(true)
+                        setMode('input')
                     }}
                     className='bg-main-accent text-white p-2 rounded shadow-md'
                 >Добавить материал</button>
@@ -38,18 +39,35 @@ function MaterialsPage() {
                     <MaterialView
                         key={material.id}
                         material={material}
-                        onSelect={selectedMaterial => setSelectedMaterial(selectedMaterial)}
+                        onEdit={editedMaterial => {
+                            setSelectedMaterial(editedMaterial)
+                            setMode('input')
+                        }}
+                        onSelect={selectedMaterial => {
+                            setSelectedMaterial(selectedMaterial)
+                            setMode('products')
+                        }}
                     />
                 ))}
             </div>
 
-            {isEditMode && (
+            {mode === 'input' && (
                 <MaterialInputModal
                     onClose={() => {
-                        setIsEditMode(false)
+                        setMode(null)
                         setSelectedMaterial(null)
                     }}
                     editedMaterial={selectedMaterial}
+                />
+            )}
+
+            {mode === 'products' && (
+                <MaterialProducts
+                    onClose={() => {
+                        setMode(null)
+                        setSelectedMaterial(null)
+                    }}
+                    material={selectedMaterial}
                 />
             )}
         </div>
