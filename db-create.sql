@@ -47,33 +47,43 @@ set type_id = t.id
 from material_types t
 where m.type_name = t.type_name;
 
+select * from materials;
+
 alter table materials
 drop column type_name;
+
 
 update products p
 set type_id = t.id
 from product_types t
 where p.type_name = t.type_name;
 
+select * from products;
+
 alter table products
 drop column type_name;
+
 
 update materials_products mp
 set material_id = m.id
 from materials m
 where mp.material_name = m.material_name;
 
+select * from materials_products;
+
 alter table materials_products
 drop column material_name;
+
 
 update materials_products mp
 set product_id = p.id
 from products p
 where mp.product_name = p.product_name;
 
+select * from materials_products;
+
 alter table materials_products
 drop column product_name;
 
+
 --
-select * from materials;
-select * from products;

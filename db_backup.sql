@@ -2,12 +2,12 @@
 -- PostgreSQL database dump
 --
 
-\restrict KZcLGGSw5USEHoBzev1g8XxfjZFgMLDmPnykfjWmS88VHLljyPaAJ3Qi1SUpHdn
+\restrict EUSw2DHT2WVeXrbj6fSQLi4DL3faeam4329iztJe3z3UhlklQtk6azihfcg90sg
 
 -- Dumped from database version 17.9
 -- Dumped by pg_dump version 18.3
 
--- Started on 2026-05-10 13:01:36 +05
+-- Started on 2026-05-11 22:32:55 +05
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -26,7 +26,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- TOC entry 217 (class 1259 OID 16389)
+-- TOC entry 218 (class 1259 OID 16502)
 -- Name: material_types; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -40,7 +40,7 @@ CREATE TABLE public.material_types (
 ALTER TABLE public.material_types OWNER TO postgres;
 
 --
--- TOC entry 218 (class 1259 OID 16392)
+-- TOC entry 217 (class 1259 OID 16501)
 -- Name: material_types_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -57,7 +57,7 @@ ALTER SEQUENCE public.material_types_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 4512 (class 0 OID 0)
--- Dependencies: 218
+-- Dependencies: 217
 -- Name: material_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -65,7 +65,7 @@ ALTER SEQUENCE public.material_types_id_seq OWNED BY public.material_types.id;
 
 
 --
--- TOC entry 219 (class 1259 OID 16393)
+-- TOC entry 220 (class 1259 OID 16509)
 -- Name: materials; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -84,7 +84,7 @@ CREATE TABLE public.materials (
 ALTER TABLE public.materials OWNER TO postgres;
 
 --
--- TOC entry 220 (class 1259 OID 16396)
+-- TOC entry 219 (class 1259 OID 16508)
 -- Name: materials_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -101,7 +101,7 @@ ALTER SEQUENCE public.materials_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 4513 (class 0 OID 0)
--- Dependencies: 220
+-- Dependencies: 219
 -- Name: materials_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -109,7 +109,7 @@ ALTER SEQUENCE public.materials_id_seq OWNED BY public.materials.id;
 
 
 --
--- TOC entry 221 (class 1259 OID 16397)
+-- TOC entry 226 (class 1259 OID 16540)
 -- Name: materials_products; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -124,7 +124,7 @@ CREATE TABLE public.materials_products (
 ALTER TABLE public.materials_products OWNER TO postgres;
 
 --
--- TOC entry 222 (class 1259 OID 16400)
+-- TOC entry 225 (class 1259 OID 16539)
 -- Name: materials_products_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -141,7 +141,7 @@ ALTER SEQUENCE public.materials_products_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 4514 (class 0 OID 0)
--- Dependencies: 222
+-- Dependencies: 225
 -- Name: materials_products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -149,7 +149,7 @@ ALTER SEQUENCE public.materials_products_id_seq OWNED BY public.materials_produc
 
 
 --
--- TOC entry 223 (class 1259 OID 16401)
+-- TOC entry 222 (class 1259 OID 16521)
 -- Name: product_types; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -163,7 +163,7 @@ CREATE TABLE public.product_types (
 ALTER TABLE public.product_types OWNER TO postgres;
 
 --
--- TOC entry 224 (class 1259 OID 16404)
+-- TOC entry 221 (class 1259 OID 16520)
 -- Name: product_types_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -180,7 +180,7 @@ ALTER SEQUENCE public.product_types_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 4515 (class 0 OID 0)
--- Dependencies: 224
+-- Dependencies: 221
 -- Name: product_types_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -188,13 +188,14 @@ ALTER SEQUENCE public.product_types_id_seq OWNED BY public.product_types.id;
 
 
 --
--- TOC entry 225 (class 1259 OID 16405)
+-- TOC entry 224 (class 1259 OID 16528)
 -- Name: products; Type: TABLE; Schema: public; Owner: postgres
 --
 
 CREATE TABLE public.products (
     id integer NOT NULL,
     article character varying(20),
+    type_name character varying(40),
     type_id integer,
     product_name character varying(40),
     min_price_for_partners numeric(10,2)
@@ -204,7 +205,7 @@ CREATE TABLE public.products (
 ALTER TABLE public.products OWNER TO postgres;
 
 --
--- TOC entry 226 (class 1259 OID 16408)
+-- TOC entry 223 (class 1259 OID 16527)
 -- Name: products_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -221,7 +222,7 @@ ALTER SEQUENCE public.products_id_seq OWNER TO postgres;
 
 --
 -- TOC entry 4516 (class 0 OID 0)
--- Dependencies: 226
+-- Dependencies: 223
 -- Name: products_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -229,7 +230,7 @@ ALTER SEQUENCE public.products_id_seq OWNED BY public.products.id;
 
 
 --
--- TOC entry 4333 (class 2604 OID 16409)
+-- TOC entry 4333 (class 2604 OID 16505)
 -- Name: material_types id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -237,7 +238,7 @@ ALTER TABLE ONLY public.material_types ALTER COLUMN id SET DEFAULT nextval('publ
 
 
 --
--- TOC entry 4334 (class 2604 OID 16410)
+-- TOC entry 4334 (class 2604 OID 16512)
 -- Name: materials id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -245,7 +246,7 @@ ALTER TABLE ONLY public.materials ALTER COLUMN id SET DEFAULT nextval('public.ma
 
 
 --
--- TOC entry 4335 (class 2604 OID 16411)
+-- TOC entry 4337 (class 2604 OID 16543)
 -- Name: materials_products id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -253,7 +254,7 @@ ALTER TABLE ONLY public.materials_products ALTER COLUMN id SET DEFAULT nextval('
 
 
 --
--- TOC entry 4336 (class 2604 OID 16412)
+-- TOC entry 4335 (class 2604 OID 16524)
 -- Name: product_types id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -261,7 +262,7 @@ ALTER TABLE ONLY public.product_types ALTER COLUMN id SET DEFAULT nextval('publi
 
 
 --
--- TOC entry 4337 (class 2604 OID 16413)
+-- TOC entry 4336 (class 2604 OID 16531)
 -- Name: products id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -269,8 +270,8 @@ ALTER TABLE ONLY public.products ALTER COLUMN id SET DEFAULT nextval('public.pro
 
 
 --
--- TOC entry 4497 (class 0 OID 16389)
--- Dependencies: 217
+-- TOC entry 4498 (class 0 OID 16502)
+-- Dependencies: 218
 -- Data for Name: material_types; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -289,8 +290,8 @@ COPY public.material_types (id, type_name, losses_percent) FROM stdin;
 
 
 --
--- TOC entry 4499 (class 0 OID 16393)
--- Dependencies: 219
+-- TOC entry 4500 (class 0 OID 16509)
+-- Dependencies: 220
 -- Data for Name: materials; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -326,94 +327,94 @@ COPY public.materials (id, material_name, type_id, unit_price, stock_quantity, m
 
 
 --
--- TOC entry 4501 (class 0 OID 16397)
--- Dependencies: 221
+-- TOC entry 4506 (class 0 OID 16540)
+-- Dependencies: 226
 -- Data for Name: materials_products; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.materials_products (id, material_id, product_id, materials_required) FROM stdin;
-47	9	23	0.030
-46	6	23	0.060
-45	26	22	1.000
-44	24	22	1.000
-43	25	22	2.000
-42	4	22	0.060
-41	1	22	0.060
-40	23	21	1.000
-39	26	21	1.000
-38	22	21	20.000
-37	2	21	0.040
-36	23	20	1.000
-35	27	20	1.000
-34	22	20	20.000
-33	4	20	0.040
-6	23	13	1.000
-5	27	13	1.000
-4	4	13	0.080
-3	23	12	1.000
-2	26	12	1.000
-1	1	12	0.080
-7	6	14	0.078
-32	23	19	1.000
-31	26	19	1.000
-30	14	19	0.003
-29	13	19	0.003
-28	1	19	0.074
-27	23	18	1.000
-26	27	18	1.000
-25	19	18	0.001
-24	12	18	0.004
-23	5	18	0.075
-14	23	15	1.000
-13	26	15	1.000
-12	16	15	0.002
-11	2	15	0.080
-10	23	14	1.000
-9	27	14	1.000
-8	20	14	0.002
-22	23	17	1.000
-21	26	17	1.000
-20	17	17	0.002
-19	9	17	0.060
-18	23	16	1.000
-17	26	16	1.000
-16	8	16	0.040
-15	7	16	0.040
-50	27	23	1.000
-49	24	23	1.000
-48	25	23	2.000
-64	23	26	1.000
-63	27	26	1.000
-62	5	26	0.080
-68	23	27	1.000
-67	27	27	1.000
-66	21	27	0.002
-65	4	27	0.078
-71	23	28	1.000
-70	26	28	1.000
-69	10	28	0.080
-76	23	29	1.000
-75	27	29	1.000
-74	22	29	20.000
-73	12	29	0.002
-72	5	29	0.038
-61	23	25	1.000
-60	26	25	1.000
-59	15	25	0.002
-58	11	25	0.004
-57	1	25	0.072
-56	23	24	1.000
-55	27	24	1.000
-54	21	24	0.001
-53	19	24	0.002
-52	18	24	0.003
-51	4	24	0.073
+6	23	2	1.000
+5	27	2	1.000
+4	4	2	0.080
+3	23	1	1.000
+2	26	1	1.000
+1	1	1	0.080
+32	23	8	1.000
+64	23	15	1.000
+63	27	15	1.000
+62	5	15	0.080
+68	23	16	1.000
+67	27	16	1.000
+66	21	16	0.002
+65	4	16	0.078
+31	26	8	1.000
+30	14	8	0.003
+29	13	8	0.003
+28	1	8	0.074
+27	23	7	1.000
+26	27	7	1.000
+25	19	7	0.001
+24	12	7	0.004
+23	5	7	0.075
+14	23	4	1.000
+13	26	4	1.000
+12	16	4	0.002
+11	2	4	0.080
+10	23	3	1.000
+9	27	3	1.000
+8	20	3	0.002
+7	6	3	0.078
+71	23	17	1.000
+70	26	17	1.000
+69	10	17	0.080
+22	23	6	1.000
+21	26	6	1.000
+20	17	6	0.002
+19	9	6	0.060
+18	23	5	1.000
+17	26	5	1.000
+16	8	5	0.040
+15	7	5	0.040
+50	27	12	1.000
+49	24	12	1.000
+48	25	12	2.000
+47	9	12	0.030
+46	6	12	0.060
+45	26	11	1.000
+44	24	11	1.000
+43	25	11	2.000
+42	4	11	0.060
+41	1	11	0.060
+76	23	18	1.000
+75	27	18	1.000
+74	22	18	20.000
+73	12	18	0.002
+72	5	18	0.038
+40	23	10	1.000
+39	26	10	1.000
+38	22	10	20.000
+37	2	10	0.040
+36	23	9	1.000
+35	27	9	1.000
+34	22	9	20.000
+33	4	9	0.040
+61	23	14	1.000
+60	26	14	1.000
+59	15	14	0.002
+58	11	14	0.004
+57	1	14	0.072
+56	23	13	1.000
+55	27	13	1.000
+54	21	13	0.001
+53	19	13	0.002
+52	18	13	0.003
+51	4	13	0.073
 \.
 
 
 --
--- TOC entry 4503 (class 0 OID 16401)
--- Dependencies: 223
+-- TOC entry 4502 (class 0 OID 16521)
+-- Dependencies: 222
 -- Data for Name: product_types; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
@@ -428,36 +429,36 @@ COPY public.product_types (id, type_name, coefficient) FROM stdin;
 
 
 --
--- TOC entry 4505 (class 0 OID 16405)
--- Dependencies: 225
+-- TOC entry 4504 (class 0 OID 16528)
+-- Dependencies: 224
 -- Data for Name: products; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.products (id, article, type_id, product_name, min_price_for_partners) FROM stdin;
-26	TEA-015	\N	Чай «Цейлон Голд»	325.00
-13	TEA-002	\N	Чай «Ассам классик»	310.00
-12	TEA-001	\N	Чай «Утренняя сенча»	340.00
-27	TEA-016	\N	Чай «Ванильный Ассам»	365.00
-19	TEA-008	\N	Чай «Ягодный сад»	410.00
-18	TEA-007	\N	Чай «Цитрусовый закат»	375.00
-15	TEA-004	\N	Чай «Жасминовый сад»	390.00
-14	TEA-003	\N	Чай «Бергамотовый вечер»	360.00
-28	TEA-017	\N	Сбор «Смородиновый лист»	300.00
-17	TEA-006	\N	Сбор «Ромашковый уют»	290.00
-16	TEA-005	\N	Сбор «Мята и мелисса»	280.00
-23	TEA-012	\N	Набор «Теплый вечер»	1120.00
-22	TEA-011	\N	Набор «Чайная церемония»	980.00
-29	TEA-018	\N	Чай в пакетиках «Citrus Mix»	255.00
-21	TEA-010	\N	Чай в пакетиках «Jasmine Green»	265.00
-20	TEA-009	\N	Чай в пакетиках «English Breakfast»	245.00
-25	TEA-014	\N	Чай «Летний сад»	420.00
-24	TEA-013	\N	Чай «Зимние специи»	430.00
+COPY public.products (id, article, type_name, type_id, product_name, min_price_for_partners) FROM stdin;
+15	TEA-015	Листовой чай	1	Чай «Цейлон Голд»	325.00
+2	TEA-002	Листовой чай	1	Чай «Ассам классик»	310.00
+1	TEA-001	Листовой чай	1	Чай «Утренняя сенча»	340.00
+16	TEA-016	Ароматизированный чай	2	Чай «Ванильный Ассам»	365.00
+8	TEA-008	Ароматизированный чай	2	Чай «Ягодный сад»	410.00
+7	TEA-007	Ароматизированный чай	2	Чай «Цитрусовый закат»	375.00
+4	TEA-004	Ароматизированный чай	2	Чай «Жасминовый сад»	390.00
+3	TEA-003	Ароматизированный чай	2	Чай «Бергамотовый вечер»	360.00
+17	TEA-017	Травяной сбор	3	Сбор «Смородиновый лист»	300.00
+6	TEA-006	Травяной сбор	3	Сбор «Ромашковый уют»	290.00
+5	TEA-005	Травяной сбор	3	Сбор «Мята и мелисса»	280.00
+12	TEA-012	Подарочный набор	4	Набор «Теплый вечер»	1120.00
+11	TEA-011	Подарочный набор	4	Набор «Чайная церемония»	980.00
+18	TEA-018	Пакетированный чай	5	Чай в пакетиках «Citrus Mix»	255.00
+10	TEA-010	Пакетированный чай	5	Чай в пакетиках «Jasmine Green»	265.00
+9	TEA-009	Пакетированный чай	5	Чай в пакетиках «English Breakfast»	245.00
+14	TEA-014	Сезонная коллекция	6	Чай «Летний сад»	420.00
+13	TEA-013	Сезонная коллекция	6	Чай «Зимние специи»	430.00
 \.
 
 
 --
 -- TOC entry 4517 (class 0 OID 0)
--- Dependencies: 218
+-- Dependencies: 217
 -- Name: material_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -466,7 +467,7 @@ SELECT pg_catalog.setval('public.material_types_id_seq', 10, true);
 
 --
 -- TOC entry 4518 (class 0 OID 0)
--- Dependencies: 220
+-- Dependencies: 219
 -- Name: materials_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -475,7 +476,7 @@ SELECT pg_catalog.setval('public.materials_id_seq', 27, true);
 
 --
 -- TOC entry 4519 (class 0 OID 0)
--- Dependencies: 222
+-- Dependencies: 225
 -- Name: materials_products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -484,7 +485,7 @@ SELECT pg_catalog.setval('public.materials_products_id_seq', 76, true);
 
 --
 -- TOC entry 4520 (class 0 OID 0)
--- Dependencies: 224
+-- Dependencies: 221
 -- Name: product_types_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -493,15 +494,15 @@ SELECT pg_catalog.setval('public.product_types_id_seq', 6, true);
 
 --
 -- TOC entry 4521 (class 0 OID 0)
--- Dependencies: 226
+-- Dependencies: 223
 -- Name: products_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.products_id_seq', 29, true);
+SELECT pg_catalog.setval('public.products_id_seq', 18, true);
 
 
 --
--- TOC entry 4339 (class 2606 OID 16415)
+-- TOC entry 4339 (class 2606 OID 16507)
 -- Name: material_types material_types_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -510,7 +511,7 @@ ALTER TABLE ONLY public.material_types
 
 
 --
--- TOC entry 4341 (class 2606 OID 16417)
+-- TOC entry 4341 (class 2606 OID 16514)
 -- Name: materials materials_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -519,7 +520,7 @@ ALTER TABLE ONLY public.materials
 
 
 --
--- TOC entry 4343 (class 2606 OID 16419)
+-- TOC entry 4347 (class 2606 OID 16545)
 -- Name: materials_products materials_products_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -528,7 +529,7 @@ ALTER TABLE ONLY public.materials_products
 
 
 --
--- TOC entry 4345 (class 2606 OID 16421)
+-- TOC entry 4343 (class 2606 OID 16526)
 -- Name: product_types product_types_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -537,7 +538,7 @@ ALTER TABLE ONLY public.product_types
 
 
 --
--- TOC entry 4347 (class 2606 OID 16423)
+-- TOC entry 4345 (class 2606 OID 16533)
 -- Name: products products_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -546,7 +547,7 @@ ALTER TABLE ONLY public.products
 
 
 --
--- TOC entry 4349 (class 2606 OID 16424)
+-- TOC entry 4350 (class 2606 OID 16546)
 -- Name: materials_products materials_products_material_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -555,7 +556,7 @@ ALTER TABLE ONLY public.materials_products
 
 
 --
--- TOC entry 4350 (class 2606 OID 16429)
+-- TOC entry 4351 (class 2606 OID 16551)
 -- Name: materials_products materials_products_product_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -564,7 +565,7 @@ ALTER TABLE ONLY public.materials_products
 
 
 --
--- TOC entry 4348 (class 2606 OID 16434)
+-- TOC entry 4348 (class 2606 OID 16515)
 -- Name: materials materials_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -573,7 +574,7 @@ ALTER TABLE ONLY public.materials
 
 
 --
--- TOC entry 4351 (class 2606 OID 16439)
+-- TOC entry 4349 (class 2606 OID 16534)
 -- Name: products products_type_id_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -581,11 +582,11 @@ ALTER TABLE ONLY public.products
     ADD CONSTRAINT products_type_id_fkey FOREIGN KEY (type_id) REFERENCES public.product_types(id);
 
 
--- Completed on 2026-05-10 13:01:36 +05
+-- Completed on 2026-05-11 22:32:55 +05
 
 --
 -- PostgreSQL database dump complete
 --
 
-\unrestrict KZcLGGSw5USEHoBzev1g8XxfjZFgMLDmPnykfjWmS88VHLljyPaAJ3Qi1SUpHdn
+\unrestrict EUSw2DHT2WVeXrbj6fSQLi4DL3faeam4329iztJe3z3UhlklQtk6azihfcg90sg
 

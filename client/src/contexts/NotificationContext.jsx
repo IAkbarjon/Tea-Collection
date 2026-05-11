@@ -64,14 +64,14 @@ function NotificationProvider({ children, maxNotifications=3 }) {
         <NotificationContext.Provider value={value}>
             {children}
 
-            <div className='fixed top-[20px] right-[20px] z-[999] max-w-[250px] flex flex-col gap-[10px]'>
+            <div className='fixed top-[20px] right-[20px] z-[9999] max-w-[250px] flex flex-col gap-[10px] min-w-[300px]'>
                 {notifications.map(notification => (
                     <Alert
                         key={notification.id}
                         variant={notification.type}
                         onClose={() => removeNotification(notification.id)}
                         dismissible
-                        className='shadow-md shadow-[rgba(0,0,0,0.1)]'
+                        className='shadow-md shadow-[rgba(0,0,0,0.1)] w-full'
                         style={{
                             animation: `slideIn 0.3s ease`
                         }}
